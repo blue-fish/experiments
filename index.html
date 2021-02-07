@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Results of Voice Cloning Experiments by blue-fish.</title>
+  </head>
+  <body>
+    <h1>
+      Results of Voice Cloning Experiments by blue-fish.<hr>
+    </h1>
+    <h2>
+      Real-Time-Voice-Cloning
+    </h2>
+    <p>
+      These experiments try to reproduce the results of the paper "Transfer
+      Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis."
+    </p>
+    <ul>
+      <li>
+        <a href="RTVC-1.html">RTVC-1</a>: Results with pretrained models
+      </li>
+      <li>
+        <a href="RTVC-2.html">RTVC-2</a>: Additional training for vocoder model
+      </li>
+      <li>
+        <a href="RTVC-3.html">RTVC-3</a>: Synthesizer trained on a limited dataset
+      </li>
+      <li>
+        <a href="RTVC-4.html">RTVC-4</a>: Synthesizer trained on dataset with all silence trimmed out
+      </li>
+      <li>
+        <a href="RTVC-5.html">RTVC-5</a>: Use VCTK dataset to train synthesizer and vocoder
+      </li>
+      <li>
+        <a href="RTVC-6.html">RTVC-6</a>: Tacotron 1 synthesizer (VCTK) 
+      </li>
+      <li>
+        <a href="RTVC-7.html">RTVC-7</a>: Tacotron 1 synthesizer (LibriSpeech) 
+      </li>
+    </ul>
+    <p>
+      A better voice clone can be made by finetuning a multispeaker Tacotron
+      model to the target voice, which this experiment demonstrates.
+    </p>
+    <ul>
+      <li>
+        <a href="RTVC-FT-1.html">RTVC-FT-1</a>: Voice clones with finetuned RTVC-7 model
+      </li>
+    </ul>
+  </body>
+</html>

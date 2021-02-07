@@ -1,0 +1,459 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio Samples for RTVC-FT-1 Voice Cloning Model</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio Samples for RTVC-FT-1 Voice Cloning Model</h1>
+        </header>
+      </article>
+
+      <p><b>Repository:</b>
+         <a href="https://github.com/blue-fish/Real-Time-Voice-Cloning/tree/v1.0">blue-fish/Real-Time-Voice-Cloning</a>
+         (v1.0)</p>
+
+      <p><b>Description:</b>
+        RTVC-FT-1 takes the RTVC-7 model and trains it on data from each of
+        the 6 target speakers. Each speaker has its own finetuned model.
+      </p>
+
+      <p><a href="index.html">Click here for more voice cloning experiments.</a></p>
+
+      <h2>RTVC-FT-1 Model Overview</h2>
+
+<table class="model">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Model</th>
+      <th>Steps</th>
+      <th>Batch Size</th>
+      <th>Datasets Used</th>
+      <th>Speakers</th>
+      <th>Audio Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Speaker Encoder:</b></td>
+      <td>Pretrained</td>
+      <td>GE2E</td>
+      <td>1,564,501</td>
+      <td>64</td>
+      <td>LibriSpeech train-other-500<br>
+          VoxCeleb1 Dev A-D<br>
+          VoxCeleb2 Dev A-H</td>
+      <td>8371</td>
+      <td>3201 hours</td>
+    </tr>
+    <tr>
+      <td rowspan="8"><b>Synthesizer:</b></td>
+      <td rowspan="8">
+        LS_Taco1_FT_296k<br>
+        (1 model/speaker)
+      </td>
+      <td rowspan="8">Tacotron 1</td>
+      <td>285,000</td>
+      <td>12</td>
+      <td>LibriSpeech train-clean-100<br>
+          LibriSpeech train-clean-360</td>
+      <td>1172</td>
+      <td>436 hours</td>
+    </tr>
+    <tr>
+      <td>10,000</td>
+      <td>12</td>
+      <td>LibriTTS train-clean-100<br>
+          LibriTTS train-clean-360</td>
+      <td>1172</td>
+      <td>245 hours</td>
+    </tr>
+    <tr>
+      <td rowspan="6">1,000</td>
+      <td rowspan="6">12</td>
+      <td>VCTK p240</td>
+      <td>1</td>
+      <td>0.33 hours</td>
+    </tr>
+    <tr>
+      <td>VCTK p260</td>
+      <td>1</td>
+      <td>0.30 hours</td>
+    </tr>
+    <tr>
+      <td>LibriSpeech test-clean/1320</td>
+      <td>1</td>
+      <td>0.13 hours</td>
+    </tr>
+    <tr>
+      <td>LibriSpeech test-clean/3575</td>
+      <td>1</td>
+      <td>0.13 hours</td>
+    </tr>
+    <tr>
+      <td>LibriSpeech test-clean/6829</td>
+      <td>1</td>
+      <td>0.14 hours</td>
+    </tr>
+    <tr>
+      <td>LibriSpeech test-clean/8230</td>
+      <td>1</td>
+      <td>0.14 hours</td>
+    </tr>
+    <tr>
+      <td><b>Vocoder:</b></td>
+      <td><a href="https://github.com/CorentinJ/Real-Time-Voice-Cloning/issues/126#issuecomment-650531957">LS_GTA_1159k</a></td>
+      <td>WaveRNN</td>
+      <td>1,159,000</td>
+      <td>50</td>
+      <td>LibriSpeech train-clean-100<br>
+          LibriSpeech train-clean-360</td>
+      <td>1172</td>
+      <td>436 hours</td>
+    </tr>
+  </tbody>
+</table>
+
+      <h2>Voice Cloning Results</h2>
+
+      <p><i>All speakers are unseen during training for Google and RTVC-7 only. The first row is the reference audio used to compute the speaker embedding. The rows below that are synthesized using that speaker embedding.</i></p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th><th>VCTK p240</th><th>VCTK p260</th><th>LibriSpeech 1320</th><th>LibriSpeech 3575</th><th>LibriSpeech 6829</th><th>LibriSpeech 8230</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td><td colspan="6"><span><b>Reference:</b></td></span>
+    </tr>
+    <tr>
+      <td></td>
+      <td><audio controls=""><source src="wavs/groundtruth/p240_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/groundtruth/p260_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/groundtruth/1320_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/groundtruth/3575_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/groundtruth/6829_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/groundtruth/8230_00000.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span><b>Synthesized:</b></span></td>
+    </tr>
+    <tr>
+      <td></td><td colspan="6"><span>0: Take a look at these pages for crooked creek drive.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00002.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00002.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00002.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr><td></td><td colspan="6"><span>1: There are several listings for gas station.</span></td></tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00006.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00006.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00006.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr><td></td><td colspan="6"><span>2: Here's the forecast for the next four days.</span></td></tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00027.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00027.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00027.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>3: Here is some information about the Gospel of John.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00038.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00038.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00038.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>4: His motives were more pragmatic and political.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00053.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00053.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00053.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>5: She had three brothers and two sisters.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00062.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00062.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00062.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>6: This work reflects a quest for lost identity, a recuperation of an unknown past.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00073.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00073.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00073.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>7: There were many editions of these works still being used in the nineteenth century.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00078.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00078.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00078.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>8: Modern birds are classified as coelurosaurs by nearly all palaeontologists.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00082.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00082.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00082.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="7">&nbsp;</td></tr>
+    <tr>
+      <td></td><td colspan="6"><span>9: He was being fitted for ruling the state, in the words of his biographer.</span></td>
+    </tr>
+    <tr>
+      <td>Google:</td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p240_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/p260_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/1320_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/3575_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/6829_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/Google/8230_00091.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-7:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p240_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/p260_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/1320_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/3575_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/6829_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-7/8230_00091.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td>RTVC-FT-1:</td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p240_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/p260_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/1320_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/3575_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/6829_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="wavs/synthesized/RTVC-FT-1/8230_00091.wav" type="audio/wav"></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </body>
+</html>

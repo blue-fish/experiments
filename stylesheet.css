@@ -1,0 +1,9 @@
+table.model {
+  border-collapse: collapse;
+}
+
+table.model td, table.model th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
